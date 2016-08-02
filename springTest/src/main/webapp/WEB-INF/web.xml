@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	<context-param>
+		<param-name>cfgFile</param-name>
+		<param-value>
+    		/WEB-INF/classes/cfg.properties
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>serverClass</param-name>
+		<param-value>com.wolaidai.callback.server.CallBackServer</param-value>
+	</context-param>
+	<listener>
+		<listener-class>com.wolaidai.framwork.common.listener.StartupListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>uriFilter</filter-name>
+		<filter-class>com.wolaidai.framwork.common.filter.UrlFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>uriFilter</filter-name>
+		<url-pattern>/callback/umpay_callback</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
+</web-app>
