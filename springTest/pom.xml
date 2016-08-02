@@ -192,7 +192,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>umpay</finalName>
+		<finalName>springClover</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
