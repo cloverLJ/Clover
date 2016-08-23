@@ -1,13 +1,16 @@
 package springTest;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
-@SuppressWarnings("deprecation")
+
 public class Test {
 	public static void main(String[] args) {
-		BeanFactory bf  = new XmlBeanFactory(new ClassPathResource("beans.xml"));
-		HelloWorld helloWord = (HelloWorld) bf.getBean("helloWorld");
+		ClassPathResource resource  = new ClassPathResource("beans.xml");
+		DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+		XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+		reader.loadBeanDefinitions(resource);
+		HelloWorld helloWord = factory.getBean("helloWorld", HelloWorld.class);
 		helloWord.sayHello();
 	}
 	
