@@ -2,6 +2,7 @@ package springTest;
 
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
 public class Test {
@@ -12,6 +13,8 @@ public class Test {
 		reader.loadBeanDefinitions(resource);
 		HelloWorld helloWord = factory.getBean("helloWorld", HelloWorld.class);
 		helloWord.sayHello();
+		
+		ApplicationContext aa;
 	}
 	
 
